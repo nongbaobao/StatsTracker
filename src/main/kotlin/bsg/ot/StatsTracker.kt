@@ -2,14 +2,10 @@ package bsg.ot
 
 import net.mamoe.mirai.Bot
 import net.mamoe.mirai.console.command.CommandManager.INSTANCE.register
-import net.mamoe.mirai.console.command.ConsoleCommandSender.subject
 import net.mamoe.mirai.console.permission.AbstractPermitteeId
 import net.mamoe.mirai.console.permission.PermissionService.Companion.permit
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
 import net.mamoe.mirai.console.plugin.jvm.KotlinPlugin
-import net.mamoe.mirai.event.GlobalEventChannel
-import net.mamoe.mirai.event.subscribe
-import net.mamoe.mirai.event.subscribeGroupMessages
 import net.mamoe.mirai.utils.info
 
 object StatsTracker : KotlinPlugin(
@@ -29,12 +25,5 @@ object StatsTracker : KotlinPlugin(
 
         // permit
         AbstractPermitteeId.AnyMember(910668166).permit(TrackerCommand.permission)
-
-        suspend {
-            Bot.instances
-                .first()
-                .getGroup(910668166)!!
-                .sendMessage("")
-        }
     }
 }

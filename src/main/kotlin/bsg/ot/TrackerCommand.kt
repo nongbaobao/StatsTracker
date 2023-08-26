@@ -36,9 +36,4 @@ object TrackerCommand:  CompositeCommand(
         }
     }
 
-    @SubCommand("toggle")
-    suspend fun UserCommandSender.toggle() {
-
-    }
-
 }
