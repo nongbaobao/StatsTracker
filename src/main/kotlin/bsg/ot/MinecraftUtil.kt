@@ -17,6 +17,15 @@ object MinecraftUtil {
         return json.getStr("name") != null
     }
 
+    fun getNameFromUUID(uuid: String): String? {
+        val json = JSONUtil.parseObj(getJson("https://api.hypixel.net/player?key=${Config.apiKey}&uuid=$uuid"))
+        if (json.getBool("success")) {
+            return json.getJSONObject("player").getStr("displayname")
+        }
+
+        return null
+    }
+
     fun getUUID(user: String): String {
         if (hasUser(user)) {
             val json = JSONUtil.parseObj(getJson("https://api.mojang.com/users/profiles/minecraft/$user"))
